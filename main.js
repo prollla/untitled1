@@ -27,11 +27,12 @@ function processNumber(inputNumber) {
 }
 
 function inputNumber() {
-    rl.question('Введите целое число или 0): ', (answer) => {
-        const input = parseInt(answer);
+    rl.question('Введите целое число (или 0): ', (answer) => {
+        const input = parseFloat(answer);
 
-        if (isNaN(input)) {
+        if (!Number.isInteger(input) || isNaN(input)) {
             console.log('Ошибка! Введите целое число.');
+            inputNumber();
         } else {
             if (input !== 0) {
                 processNumber(input);
@@ -45,3 +46,4 @@ function inputNumber() {
 }
 
 inputNumber();
+
