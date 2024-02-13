@@ -26,12 +26,14 @@ function processNumber(inputNumber) {
         numberWithMaxSum = inputNumber;
     }
 }
-
+function isOctal(input) {
+    return /^0[0-9]+$/.test(input);
+}
 function inputNumber() {
     rl.question('Введите целое число (или 0): ', (answer) => {
         const input = Number(answer);
 
-        if (!Number.isInteger(input) || isNaN(input)) {
+        if (!Number.isInteger(input) || isNaN(input) || isOctal(answer)) {
             console.log('Ошибка! Введите целое число.');
             inputNumber();
         } else {
