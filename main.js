@@ -7,7 +7,6 @@ const rl = readline.createInterface({
 
 function calculateDigitSum(number) {
     number = Math.abs(number);
-
     let sum = 0;
     while (number > 0) {
         sum += number % 10;
@@ -30,14 +29,14 @@ function processNumber(inputNumber) {
 
 function inputNumber() {
     rl.question('Введите целое число (или 0): ', (answer) => {
-        const input = parseFloat(answer);
+        const input = Number(answer);
 
         if (!Number.isInteger(input) || isNaN(input)) {
             console.log('Ошибка! Введите целое число.');
             inputNumber();
         } else {
+            processNumber(input);
             if (input !== 0) {
-                processNumber(input);
                 inputNumber();
             } else {
                 console.log(`Максимальная сумма цифр в числе ${numberWithMaxSum} равна ${maxSum}`);
@@ -48,4 +47,5 @@ function inputNumber() {
 }
 
 inputNumber();
+1
 
