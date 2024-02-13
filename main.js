@@ -6,6 +6,8 @@ const rl = readline.createInterface({
 });
 
 function calculateDigitSum(number) {
+    number = Math.abs(number);
+
     let sum = 0;
     while (number > 0) {
         sum += number % 10;
