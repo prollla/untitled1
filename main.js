@@ -47,8 +47,6 @@ function inputNumber() {
             } else {
                 if (numbersWithMaxSum.length > 0) {
                     console.log(`Максимальная сумма цифр в числах ${numbersWithMaxSum.join(', ')} равна ${maxSum}`);
-                } else {
-                    console.log('Вы не ввели ни одного числа.');
                 }
                 rl.close();
             }
