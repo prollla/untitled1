@@ -16,22 +16,26 @@ function calculateDigitSum(number) {
 }
 
 let maxSum = 0;
-let numberWithMaxSum = 0;
+let numbersWithMaxSum = [];
 
 function processNumber(inputNumber) {
     const digitSum = calculateDigitSum(inputNumber);
 
     if (digitSum > maxSum) {
         maxSum = digitSum;
-        numberWithMaxSum = inputNumber;
+        numbersWithMaxSum = [inputNumber];
+    } else if (digitSum === maxSum) {
+        numbersWithMaxSum.push(inputNumber);
     }
 }
+
 function isOctal(input) {
     return /^0[0-9]+$/.test(input);
 }
+
 function inputNumber() {
     rl.question('Введите целое число (или 0): ', (answer) => {
-        const input = Number(answer);
+        const input = Number(answer.trim());
 
         if (!Number.isInteger(input) || isNaN(input) || isOctal(answer)) {
             console.log('Ошибка! Введите целое число.');
@@ -41,7 +45,11 @@ function inputNumber() {
             if (input !== 0) {
                 inputNumber();
             } else {
-                console.log(`Максимальная сумма цифр в числе ${numberWithMaxSum} равна ${maxSum}`);
+                if (numbersWithMaxSum.length > 0) {
+                    console.log(`Максимальная сумма цифр в числах ${numbersWithMaxSum.join(', ')} равна ${maxSum}`);
+                } else {
+                    console.log('Вы не ввели ни одного числа.');
+                }
                 rl.close();
             }
         }
@@ -49,5 +57,6 @@ function inputNumber() {
 }
 
 inputNumber();
-1
+
+
 
